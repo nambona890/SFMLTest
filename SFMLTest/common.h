@@ -29,12 +29,11 @@ T clamp(const T& n, const T& lower, const T& upper) {
 }
 
 template <typename T>
-T modulo(const T& n, const T& max) //why the fuck doesn't std come with a normal modulo function
+T modulo(T n, T max) //why the fuck doesn't std come with a normal modulo function
 {
-	if (n > max)
-		return n - max;
+	if (n >= max)
+		n -= max;
 	else if (n < (T)0)
-		return n + max;
-	else
-		return n;
+		n += max;
+	return n;
 }
