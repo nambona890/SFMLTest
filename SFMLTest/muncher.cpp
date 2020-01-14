@@ -1,8 +1,9 @@
 #include "muncher.h"
 
-Muncher::Muncher(const sf::Texture* muncherImage)
+Muncher::Muncher(const sf::Texture* muncherImage, const sf::Color* initColor)
 {
 	muncherSprite.setTexture(*muncherImage);
+	muncherSprite.setColor(*initColor);
 	size = randf3(1.5f, 6.0f);
 	angle = randf2(TAU);
 	bounds = size*((muncherImage->getSize().x + muncherImage->getSize().y) / 4);
@@ -12,8 +13,8 @@ Muncher::Muncher(const sf::Texture* muncherImage)
 
 void Muncher::UpdateMuncher(const float dt)
 {
-	TransformMuncher();
 	MoveMuncher(dt);
+	TransformMuncher();
 }
 
 void Muncher::TransformMuncher()
@@ -56,4 +57,37 @@ void Muncher::MoveMuncher(const float dt)
 			angle = BounceAngle(angle, PI);
 		position.y = bounds;
 	}
+}
+
+
+
+
+ControlableMuncher::ControlableMuncher(const sf::Texture* muncherImage, const sf::Color* initColor) : Muncher(muncherImage, initColor)
+{
+
+}
+
+void ControlableMuncher::UpdateMuncher(const float dt)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+		angle = modulo(angle - (PI * dt), TAU);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+		angle = modulo(angle + (PI * dt), TAU);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
+		size = clamp(float(size + (3 * dt)), 1.5f, 6.0f);
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
+		size = clamp(float(size - (3 * dt)), 1.5f, 6.0f);
+	bounds = size * ((muncherSprite.getLocalBounds().width + muncherSprite.getLocalBounds().height) / 4);
+	Muncher::MoveMuncher(dt);
+	Muncher::TransformMuncher();
+}
+
+sf::Sprite ControlableMuncher::GetMuncherSprite()
+{
+	return muncherSprite;
+}
+
+void ControlableMuncher::SetMuncherTexture(const sf::Texture* muncherImage)
+{
+	muncherSprite.setTexture(*muncherImage);
 }

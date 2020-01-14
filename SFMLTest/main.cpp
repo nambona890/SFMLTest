@@ -11,7 +11,8 @@ int main()
 	sf::Clock dc;
 	std::vector<Muncher> munchers;
 	for (int i = 0; i < 8; i++)
-		munchers.push_back(Muncher(&muncherTex[0]));
+		munchers.push_back(Muncher(&muncherTex[0], &sf::Color{ 255,0,0 }));
+	ControlableMuncher controlMuncher(&muncherTex[0], &sf::Color{ 255,255,255 });
 	float dt = 0,time = 0.6;
 	int munindex = 0;
 	while (window.isOpen())
@@ -21,6 +22,7 @@ int main()
 		{
 			for(int i=0;i<8;i++)
 				munchers[i].muncherSprite.setTexture(muncherTex[munindex]);
+			controlMuncher.SetMuncherTexture(&muncherTex[munindex]);
 			if (++munindex > 1)
 				munindex = 0;
 			time = 0.0f;
@@ -33,7 +35,7 @@ int main()
 			{
 				munchers.clear();
 				for (int i = 0; i < 8; i++)
-					munchers.push_back(Muncher(&muncherTex[munindex]));
+					munchers.push_back(Muncher(&muncherTex[munindex], &sf::Color{ 255,0,0 }));
 			}
 		}
 		window.clear(sf::Color{0,128,128});
@@ -42,6 +44,8 @@ int main()
 			munchers[i].UpdateMuncher(dt);
 			window.draw(munchers[i].muncherSprite);
 		}
+		controlMuncher.UpdateMuncher(dt);
+		window.draw(controlMuncher.GetMuncherSprite());
 		window.display();
 		dt = dc.restart().asSeconds();
 	}
