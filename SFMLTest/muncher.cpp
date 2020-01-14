@@ -3,7 +3,7 @@
 Muncher::Muncher(const sf::Texture* muncherImage)
 {
 	muncherSprite.setTexture(*muncherImage);
-	size = randf3(1.0f, 6.0f);
+	size = randf3(1.5f, 6.0f);
 	angle = randf2(TAU);
 	bounds = size*((muncherImage->getSize().x + muncherImage->getSize().y) / 4);
 	position = {randf3(bounds,SCREENWIDTH-bounds),randf3(bounds,SCREENHEIGHT-bounds)};
