@@ -11,7 +11,7 @@
 #define randf() (float(rand())/float((RAND_MAX)))
 #define randf2(R_MAX) (float(rand())/float(RAND_MAX/R_MAX))
 #define randf3(R_MIN,R_MAX) (R_MIN+(float(rand())/float(RAND_MAX/(R_MAX-R_MIN))))
-#define BounceAngle(angle,normal) fmod(((normal - angle) * 2 + angle) + PI, TAU)
+#define BounceAngle(angle,normal) modulo(((normal - angle) * 2 + angle) + PI, TAU)
 
 typedef sf::Vector2f Vec2f;
 
@@ -26,4 +26,15 @@ sf::Vector2<T> operator *(const sf::Vector2<T>& left, const sf::Vector2<T>& righ
 template <typename T>
 T clamp(const T& n, const T& lower, const T& upper) {
 	return std::max(lower, std::min(n, upper));
+}
+
+template <typename T>
+T modulo(const T& n, const T& max) //why the fuck doesn't std come with a normal modulo function
+{
+	if (n > max)
+		return n - max;
+	else if (n < (T)0)
+		return n + max;
+	else
+		return n;
 }

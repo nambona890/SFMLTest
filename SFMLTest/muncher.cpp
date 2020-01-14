@@ -28,10 +28,7 @@ void Muncher::TransformMuncher()
 void Muncher::MoveMuncher(const float dt)
 {
 	float dspeed = dt * speed;
-	if (angle > TAU)
-		angle -= TAU;
-	if (angle < 0)
-		angle += TAU;
+	angle = modulo(angle, TAU);
 	position += {sinf(-angle + PI)* dspeed, cosf(-angle + PI)* dspeed};
 
 	if (position.x > SCREENWIDTH - bounds)
