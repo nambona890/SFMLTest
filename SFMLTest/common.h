@@ -11,7 +11,7 @@
 #define randf() (float(rand())/float((RAND_MAX)))
 #define randf2(R_MAX) (randf()*R_MAX)
 #define randf3(R_MIN,R_MAX) (randf2(R_MAX-R_MIN)+R_MIN)
-#define BounceAngle(angle,normal) fmod(((normal - angle) * 2 + angle) + PI, 2 * PI)
+#define BounceAngle(angle,normal) fmod(((normal - angle) * 2 + angle) + PI, TAU)
 
 typedef sf::Vector2f Vec2f;
 
