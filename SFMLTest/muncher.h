@@ -5,7 +5,6 @@ class Muncher {
 public:
 	Muncher(const sf::Texture* muncherImage);
 	void UpdateMuncher(const float dt);
-	void SetTexture(const sf::Texture* muncherImage);
 private:
 	void TransformMuncher();
 	void MoveMuncher(const float dt);

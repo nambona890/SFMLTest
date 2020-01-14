@@ -16,11 +16,6 @@ void Muncher::UpdateMuncher(const float dt)
 	MoveMuncher(dt);
 }
 
-void Muncher::SetTexture(const sf::Texture* muncherImage)
-{
-	muncherSprite.setTexture(*muncherImage);
-}
-
 void Muncher::TransformMuncher()
 {
 	Vec2f mSize = { (float)muncherSprite.getTexture()->getSize().x, (float)muncherSprite.getTexture()->getSize().y };
