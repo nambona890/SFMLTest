@@ -31,9 +31,14 @@ T clamp(const T& n, const T& lower, const T& upper) {
 template <typename T>
 T modulo(T n, T max) //why the fuck doesn't std come with a normal modulo function
 {
-	if (n >= max)
-		n -= max;
-	else if (n < (T)0)
-		n += max;
-	return n;
+	T ret;
+	if constexpr (std::is_integral_v<T>)
+		ret = n % max;
+	else
+		ret = std::fmod(n, max);
+
+	if (ret < 0)
+		ret += max;
+
+	return ret;
 }
