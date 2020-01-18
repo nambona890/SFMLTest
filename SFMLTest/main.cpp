@@ -4,6 +4,8 @@ int main()
 {
 	srand((unsigned int)time(NULL));
 	sf::RenderWindow window(sf::VideoMode(SCREENWIDTH, SCREENHEIGHT), "ur mom");
+	sf::RenderTexture renderTexture;
+	renderTexture.create(SCREENWIDTH, SCREENHEIGHT);
 	window.setKeyRepeatEnabled(false);
 	sf::Texture muncherTex[2];
 	muncherTex[0].loadFromFile("munch1.png");
@@ -13,8 +15,11 @@ int main()
 	for (int i = 0; i < 8; i++)
 		munchers.push_back(Muncher(&muncherTex[0], &sf::Color{ 255,0,0 }));
 	ControlableMuncher controlMuncher(&muncherTex[0], &sf::Color{ 255,255,255 });
-	float dt = 0,time = 0.6;
+	sf::Time dtt;
+	float time = 0.6,dt = 0;
 	int munindex = 0;
+	ImGui::SFML::Init(window);
+
 	while (window.isOpen())
 	{
 		time += dt;
@@ -37,17 +42,33 @@ int main()
 				for (int i = 0; i < 8; i++)
 					munchers.push_back(Muncher(&muncherTex[munindex], &sf::Color{ 255,0,0 }));
 			}
+			ImGui::SFML::ProcessEvent(event);
 		}
 		window.clear(sf::Color{0,128,128});
+		renderTexture.clear(sf::Color{ 0,128,128 });
 		for (int i = 0; i < 8; i++)
 		{
 			munchers[i].UpdateMuncher(dt);
-			window.draw(munchers[i].muncherSprite);
+			renderTexture.draw(munchers[i].muncherSprite);
+			//window.draw(munchers[i].muncherSprite);
 		}
 		controlMuncher.UpdateMuncher(dt);
-		window.draw(controlMuncher.GetMuncherSprite());
+		//window.draw(controlMuncher.GetMuncherSprite());
+		renderTexture.draw(controlMuncher.GetMuncherSprite());
+		sf::Sprite renderSprite(renderTexture.getTexture());
+		window.draw(renderSprite);
+		dtt = dc.restart();
+		dt = dtt.asSeconds();
+		ImGui::SFML::Update(window, dtt);
+		StartImGui();
+		ImGui::SFML::Render(window);
 		window.display();
-		dt = dc.restart().asSeconds();
 	}
 }
 
+void StartImGui()
+{
+	ImGui::Begin("Gay shit");
+	ImGui::Button("I'm gay");
+	ImGui::End();
+}
