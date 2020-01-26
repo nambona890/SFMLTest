@@ -17,6 +17,7 @@ int main()
 	ControlableMuncher controlMuncher(&muncherTex[0], &sf::Color{ 255,255,255 });
 	sf::Time dtt;
 	float time = 0.6,dt = 0;
+	float timescale = 1.0;
 	int munindex = 0;
 	ImGui::SFML::Init(window);
 
@@ -58,17 +59,18 @@ int main()
 		sf::Sprite renderSprite(renderTexture.getTexture());
 		window.draw(renderSprite);
 		dtt = dc.restart();
-		dt = dtt.asSeconds();
+		dt = dtt.asSeconds()*timescale;
 		ImGui::SFML::Update(window, dtt);
-		StartImGui();
+		StartImGui(&timescale);
 		ImGui::SFML::Render(window);
 		window.display();
 	}
 }
 
-void StartImGui()
+void StartImGui(float* timescale)
 {
 	ImGui::Begin("Gay shit");
 	ImGui::Button("I'm gay");
+	ImGui::SliderFloat("Timescale", timescale, 0.1, 10);
 	ImGui::End();
 }

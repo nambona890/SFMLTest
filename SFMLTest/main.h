@@ -4,4 +4,4 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
 
-void StartImGui();
+void StartImGui(float* timescale);
