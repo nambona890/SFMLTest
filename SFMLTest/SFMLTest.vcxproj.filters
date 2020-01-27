@@ -51,6 +51,9 @@
     <ClCompile Include="imgui-sfml\imgui-SFML.cpp">
       <Filter>Source Files\imgui-sfml</Filter>
     </ClCompile>
+    <ClCompile Include="muncherscene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="munch1.png">
@@ -93,6 +96,9 @@
     </ClInclude>
     <ClInclude Include="imgui-sfml\imgui-SFML_export.h">
       <Filter>Header Files\imgui-sfml</Filter>
+    </ClInclude>
+    <ClInclude Include="muncherscene.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

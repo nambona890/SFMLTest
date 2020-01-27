@@ -13,6 +13,14 @@
 #define randf3(R_MIN,R_MAX) (R_MIN+(float(rand())/float(RAND_MAX/(R_MAX-R_MIN))))
 #define BounceAngle(angle,normal) modulo(((normal - angle) * 2 + angle) + PI, TAU)
 
+static unsigned int gamemode = 0;
+
+enum : unsigned int
+{
+	MODE_MUNCHER,
+	MODE_RAYCAST
+};
+
 typedef sf::Vector2f Vec2f;
 
 template <typename T>

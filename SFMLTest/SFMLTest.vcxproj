@@ -151,6 +151,7 @@
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="muncher.cpp" />
+    <ClCompile Include="muncherscene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="munch1.png" />
@@ -168,6 +169,7 @@
     <ClInclude Include="imgui\imstb_truetype.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="muncher.h" />
+    <ClInclude Include="muncherscene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,6 +4,7 @@
 class Muncher
 {
 public:
+	Muncher();
 	Muncher(const sf::Texture* muncherImage, const sf::Color* initColor);
 	void UpdateMuncher(const float dt);
 protected:
@@ -23,6 +24,7 @@ protected:
 class ControlableMuncher : Muncher
 {
 public:
+	ControlableMuncher();
 	ControlableMuncher(const sf::Texture* muncherImage, const sf::Color* initColor);
 	void UpdateMuncher(const float dt);
 	sf::Sprite GetMuncherSprite();

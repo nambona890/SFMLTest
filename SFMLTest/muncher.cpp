@@ -1,5 +1,10 @@
 #include "muncher.h"
 
+Muncher::Muncher()
+{
+
+}
+
 Muncher::Muncher(const sf::Texture* muncherImage, const sf::Color* initColor)
 {
 	muncherSprite.setTexture(*muncherImage);
@@ -61,6 +66,10 @@ void Muncher::MoveMuncher(const float dt)
 
 
 
+ControlableMuncher::ControlableMuncher()
+{
+
+}
 
 ControlableMuncher::ControlableMuncher(const sf::Texture* muncherImage, const sf::Color* initColor) : Muncher(muncherImage, initColor)
 {
