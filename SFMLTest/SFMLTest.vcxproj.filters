@@ -54,6 +54,12 @@
     <ClCompile Include="muncherscene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="raycastscene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="munch1.png">
@@ -98,6 +104,12 @@
       <Filter>Header Files\imgui-sfml</Filter>
     </ClInclude>
     <ClInclude Include="muncherscene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="raycastscene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,10 +1,11 @@
 #pragma once
-#include "muncher.h"
 #include "common.h"
+#include "muncher.h"
+#include "scene.h"
 
 	
 
-class MuncherScene
+class MuncherScene : public Scene
 {
 private:
 	sf::Texture muncherTex[2];

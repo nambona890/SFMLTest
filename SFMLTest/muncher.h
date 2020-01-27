@@ -21,7 +21,7 @@ protected:
 	float speed;
 };
 
-class ControlableMuncher : Muncher
+class ControlableMuncher : public Muncher
 {
 public:
 	ControlableMuncher();

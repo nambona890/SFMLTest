@@ -7,7 +7,8 @@
 #define TAU 6.28318530718f
 #define SCREENWIDTH 640
 #define SCREENHEIGHT 480
-#define RADTODEG(ang) ((ang)*57.2957795131)
+#define RADTODEG(ang) ((ang)*57.2957795131f)
+#define DEGTORAD(ang) ((ang)/57.2957795131f)
 #define randf() (float(rand())/float((RAND_MAX)))
 #define randf2(R_MAX) (float(rand())/float(RAND_MAX/R_MAX))
 #define randf3(R_MIN,R_MAX) (R_MIN+(float(rand())/float(RAND_MAX/(R_MAX-R_MIN))))

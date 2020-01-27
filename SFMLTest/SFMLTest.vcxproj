@@ -152,6 +152,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="muncher.cpp" />
     <ClCompile Include="muncherscene.cpp" />
+    <ClCompile Include="raycastscene.cpp" />
+    <ClCompile Include="scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="munch1.png" />
@@ -170,6 +172,8 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="muncher.h" />
     <ClInclude Include="muncherscene.h" />
+    <ClInclude Include="raycastscene.h" />
+    <ClInclude Include="scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

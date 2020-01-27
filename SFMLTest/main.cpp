@@ -12,7 +12,7 @@ int main()
 	float dt = 0;
 	float timescale = 1.0;
 	ImGui::SFML::Init(window);
-	MuncherScene scene;
+	Scene scene = RaycastScene();
 	while (window.isOpen())
 	{
 
