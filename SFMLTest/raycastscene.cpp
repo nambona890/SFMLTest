@@ -26,6 +26,7 @@ void RaycastScene::Main(const float dt, sf::RenderTexture* renderTexture)
 
 
 
+	sf::Image framebuffer;
 	framebuffer.create(SCREENWIDTH, SCREENHEIGHT, sf::Color::Black);
 	for (int i = 0; i < lines.size(); i++)
 	{
@@ -65,4 +66,9 @@ void RaycastScene::Main(const float dt, sf::RenderTexture* renderTexture)
 
 
 	}
+	sf::Texture temptex;
+	temptex.loadFromImage(framebuffer);
+	sf::Sprite tempspr;
+	tempspr.setTexture(temptex);
+	renderTexture->draw(tempspr);
 }

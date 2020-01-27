@@ -21,7 +21,6 @@ private:
 	float angle = 0;
 	const float near = 0.2f;
 	const float far = 2000.0f;
-	sf::Image framebuffer;
 public:
 	RaycastScene();
 	void Main(const float dt, sf::RenderTexture* renderTexture);
