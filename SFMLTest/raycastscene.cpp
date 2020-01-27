@@ -35,14 +35,14 @@ void RaycastScene::Main(const float dt, sf::RenderTexture* renderTexture)
 		cv = verts[lines[i].v2];
 		Vec2f tv2 = { ((cv.x * cos(-angle)) - pos.x) - ((cv.y * sin(-angle)) - pos.y),((cv.x * sin(-angle) - pos.x)) + ((cv.y * cos(-angle)) - pos.y) };
 
-		if (tv1.y > 0 && tv2.y > 0 )
+		if (tv1.y < 0 && tv2.y < 0 )
 		{
-			float tx1 = (SCREENWIDTH / 2) + tv1.x * (tanf(fov) / tv1.y);
-			float tx2 = (SCREENWIDTH / 2) + tv2.x * (tanf(fov) / tv2.y);
+			float tx1 = (SCREENWIDTH / 2) + tv1.x * (tanf(fov/2) / tv1.y);
+			float tx2 = (SCREENWIDTH / 2) + tv2.x * (tanf(fov/2) / tv2.y);
 			float uty1 = (SCREENHEIGHT / 2) + (playerHeight - wallHeight) * (tanf(fov) / tv1.y);
-			float bty1 = (SCREENHEIGHT / 2) + -playerHeight * (tanf(fov) / tv1.y);
+			float bty1 = (SCREENHEIGHT / 2) + -playerHeight * (tanf(fov / 2) / tv1.y);
 			float uty2 = (SCREENHEIGHT / 2) + (playerHeight - wallHeight) * (tanf(fov) / tv2.y);
-			float bty2 = (SCREENHEIGHT / 2) + -playerHeight * (tanf(fov) / tv2.y);
+			float bty2 = (SCREENHEIGHT / 2) + -playerHeight * (tanf(fov / 2) / tv2.y);
 			if (tx2 > tx1)
 			{
 				float ucury = uty1;

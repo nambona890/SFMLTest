@@ -12,7 +12,7 @@ int main()
 	float dt = 0;
 	float timescale = 1.0;
 	ImGui::SFML::Init(window);
-	Scene scene = RaycastScene();
+	std::unique_ptr<RaycastScene> scene = std::make_unique<RaycastScene>();
 	while (window.isOpen())
 	{
 
@@ -29,7 +29,7 @@ int main()
 			ImGui::SFML::ProcessEvent(event);
 		}
 		renderTexture.clear(sf::Color{ 0, 0, 0 });
-		scene.Main(dt,&renderTexture);
+		scene->Main(dt,&renderTexture);
 		sf::Sprite renderSprite(renderTexture.getTexture());
 		window.draw(renderSprite);
 		dtt = dc.restart();
