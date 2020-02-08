@@ -54,10 +54,10 @@
     <ClCompile Include="muncherscene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="raycastscene.cpp">
+    <ClCompile Include="scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="scene.cpp">
+    <ClCompile Include="mandelbrotscene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -106,10 +106,10 @@
     <ClInclude Include="muncherscene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="raycastscene.h">
+    <ClInclude Include="scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="scene.h">
+    <ClInclude Include="mandelbrotscene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

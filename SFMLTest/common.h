@@ -5,8 +5,8 @@
 
 #define PI 3.14159265358f
 #define TAU 6.28318530718f
-#define SCREENWIDTH 640
-#define SCREENHEIGHT 480
+#define SCREENWIDTH 1024
+#define SCREENHEIGHT 768
 #define RADTODEG(ang) ((ang)*57.2957795131f)
 #define DEGTORAD(ang) ((ang)/57.2957795131f)
 #define randf() (float(rand())/float((RAND_MAX)))

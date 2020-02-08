@@ -12,7 +12,7 @@ int main()
 	float dt = 0;
 	float timescale = 1.0;
 	ImGui::SFML::Init(window);
-	std::unique_ptr<RaycastScene> scene = std::make_unique<RaycastScene>();
+	std::unique_ptr<MandelbrotScene> scene = std::make_unique<MandelbrotScene>();
 	while (window.isOpen())
 	{
 
@@ -29,13 +29,14 @@ int main()
 			ImGui::SFML::ProcessEvent(event);
 		}
 		renderTexture.clear(sf::Color{ 0, 0, 0 });
-		scene->Main(dt,&renderTexture);
+		ImGui::SFML::Update(window, dtt);
+
+		scene->Main(dt, &renderTexture);
 		sf::Sprite renderSprite(renderTexture.getTexture());
 		window.draw(renderSprite);
 		dtt = dc.restart();
-		dt = dtt.asSeconds()*timescale;
-		ImGui::SFML::Update(window, dtt);
-		StartImGui(&timescale);
+		dt = dtt.asSeconds() * timescale;
+		//StartImGui(&timescale);
 		ImGui::SFML::Render(window);
 		window.display();
 	}
