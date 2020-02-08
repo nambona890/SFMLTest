@@ -50,7 +50,7 @@ void MandelbrotScene::GenerateSet()
 				set.setPixel(x, y, sf::Color::Black);
 			else
 			{
-				unsigned int color = 255 - ((i + 1 - log(log2(std::abs(z)))) / iterations) * 255;
+				unsigned int color = ((i + 1 - log(log2(std::abs(z)))) / iterations) * 255;
 				set.setPixel(x, y, sf::Color(color, color, color));
 			}
 		}
