@@ -1,5 +1,8 @@
 Simple test of SFML and ImGui in C++.
 
+## Build Instructions
+Unless you are willing to replace the libraries, this solution must be built in VS 2019.
+
 ## Controls for the Muncher Scene
 
 - R: Generate new red munchers.

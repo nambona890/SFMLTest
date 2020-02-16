@@ -12,7 +12,9 @@ int main()
 	float dt = 0;
 	float timescale = 1.0;
 	ImGui::SFML::Init(window);
-	std::unique_ptr<MandelbrotScene> scene = std::make_unique<MandelbrotScene>();
+	MandelbrotScene* mbScene = new MandelbrotScene();
+	MuncherScene* munchScene = new MuncherScene();
+	Scene* scene = dynamic_cast<MandelbrotScene*>(mbScene);
 	while (window.isOpen())
 	{
 
@@ -36,7 +38,21 @@ int main()
 		window.draw(renderSprite);
 		dtt = dc.restart();
 		dt = dtt.asSeconds() * timescale;
-		//StartImGui(&timescale);
+		ImGui::Begin("Global Controls");
+		ImGui::SliderFloat("Timescale", &timescale, 0.1, 10);
+		if (ImGui::Button("New Mandelbrot Scene"))
+		{
+			mbScene->~MandelbrotScene();
+			mbScene = new MandelbrotScene();
+			scene = dynamic_cast<MandelbrotScene*>(mbScene);
+		}
+		if (ImGui::Button("New Muncher Scene"))
+		{
+			munchScene->~MuncherScene();
+			munchScene = new MuncherScene();
+			scene = dynamic_cast<MuncherScene*>(munchScene);
+		}
+		ImGui::End();
 		ImGui::SFML::Render(window);
 		window.display();
 	}
@@ -44,8 +60,5 @@ int main()
 
 void StartImGui(float* timescale)
 {
-	ImGui::Begin("Gay shit");
-	ImGui::Button("I'm gay");
-	ImGui::SliderFloat("Timescale", timescale, 0.1, 10);
-	ImGui::End();
+	
 }

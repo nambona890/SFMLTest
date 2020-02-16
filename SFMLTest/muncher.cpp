@@ -26,9 +26,9 @@ void Muncher::TransformMuncher()
 {
 	Vec2f mSize = { (float)muncherSprite.getTexture()->getSize().x, (float)muncherSprite.getTexture()->getSize().y };
 	muncherSprite.setOrigin(mSize * 0.5f);
-	muncherSprite.setScale(size, size);
-	muncherSprite.setRotation(RADTODEG(angle));
-	muncherSprite.setPosition(position);
+	muncherSprite.setScale(-size, size);
+	muncherSprite.setRotation(RADTODEG(-angle));
+	muncherSprite.setPosition({-position.x+SCREENWIDTH,position.y});
 }
 
 void Muncher::MoveMuncher(const float dt)
@@ -89,6 +89,11 @@ void ControlableMuncher::UpdateMuncher(const float dt)
 	bounds = size * ((muncherSprite.getLocalBounds().width + muncherSprite.getLocalBounds().height) / 4);
 	Muncher::MoveMuncher(dt);
 	Muncher::TransformMuncher();
+	ImGui::Begin("Controllable Muncher Settings");
+	ImGui::SliderFloat("Speed", &speed, 100.0f, 300.0f);
+	ImGui::SliderAngle("Angle", &angle, 0.0f, 360.0f);
+	ImGui::SliderFloat("Size", &size, 1.5f, 6.0f);
+	ImGui::End();
 }
 
 sf::Sprite ControlableMuncher::GetMuncherSprite()

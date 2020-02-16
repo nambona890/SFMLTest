@@ -5,5 +5,5 @@ class Scene
 {
 public:
 	Scene();
-	void Main(const float dt, sf::RenderTexture* renderTexture);
+	virtual void Main(const float dt, sf::RenderTexture* renderTexture);
 };
