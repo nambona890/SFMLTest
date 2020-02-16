@@ -57,8 +57,3 @@ int main()
 		window.display();
 	}
 }
-
-void StartImGui(float* timescale)
-{
-	
-}
