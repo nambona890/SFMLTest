@@ -14,7 +14,8 @@ int main()
 	ImGui::SFML::Init(window);
 	MandelbrotScene* mbScene = new MandelbrotScene();
 	MuncherScene* munchScene = new MuncherScene();
-	Scene* scene = dynamic_cast<MandelbrotScene*>(mbScene);
+	Mode7Scene* mode7Scene = new Mode7Scene();
+	Scene* scene = dynamic_cast<Mode7Scene*>(mode7Scene);
 	while (window.isOpen())
 	{
 
@@ -51,6 +52,12 @@ int main()
 			munchScene->~MuncherScene();
 			munchScene = new MuncherScene();
 			scene = dynamic_cast<MuncherScene*>(munchScene);
+		}
+		if (ImGui::Button("New Mode 7 Scene"))
+		{
+			mode7Scene->~Mode7Scene();
+			mode7Scene = new Mode7Scene();
+			scene = dynamic_cast<Mode7Scene*>(mode7Scene);
 		}
 		ImGui::End();
 		ImGui::SFML::Render(window);

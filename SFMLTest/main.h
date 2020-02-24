@@ -4,3 +4,4 @@
 #include "imgui-SFML.h"
 #include "muncherscene.h"
 #include "mandelbrotscene.h"
+#include "mode7scene.h"

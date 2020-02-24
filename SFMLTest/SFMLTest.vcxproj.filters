@@ -60,12 +60,18 @@
     <ClCompile Include="mandelbrotscene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mode7scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="munch1.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="munch2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ayylmao.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
@@ -110,6 +116,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mandelbrotscene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mode7scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
