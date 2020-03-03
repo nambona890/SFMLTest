@@ -5,3 +5,4 @@
 #include "muncherscene.h"
 #include "mandelbrotscene.h"
 #include "mode7scene.h"
+#include "raycastscene.h"

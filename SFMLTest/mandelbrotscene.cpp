@@ -33,10 +33,10 @@ void MandelbrotScene::GenerateSet()
 	const double ySlope = (yUBound - yLBound) / SCREENHEIGHT;
 
 	double curY = yLBound;
-	for (int y = 0; y < SCREENHEIGHT; y++, curY += ySlope)
+	for (unsigned int y = 0; y < SCREENHEIGHT; y++, curY += ySlope)
 	{
 		double curX = xLBound;
-		for (int x = 0; x < SCREENWIDTH; x++, curX += xSlope)
+		for (unsigned int x = 0; x < SCREENWIDTH; x++, curX += xSlope)
 		{
 			comp z = { 0,0 };
 			comp c = { curX,curY };

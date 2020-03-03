@@ -63,6 +63,9 @@
     <ClCompile Include="mode7scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="raycastscene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="munch1.png">
@@ -119,6 +122,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mode7scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="raycastscene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

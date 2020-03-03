@@ -8,10 +8,10 @@ class MandelbrotScene : public Scene
 {
 private:
 	sf::Image set;
-	const double xLBound = -2.0;
-	const double xUBound = 1.0;
-	const double yLBound = -1.2;
-	const double yUBound = 1.2;
+	static constexpr double xLBound = -2.0;
+	static constexpr double xUBound = 1.0;
+	static constexpr double yLBound = -1.2;
+	static constexpr double yUBound = 1.2;
 	int iterations = 128;
 	
 public:
