@@ -18,10 +18,7 @@ int main()
 
 	ImGui::SFML::Init(window);
 
-	MandelbrotScene* mbScene = new MandelbrotScene();
-	MuncherScene* munchScene = new MuncherScene();
-	Mode7Scene* mode7Scene = new Mode7Scene();
-	Scene* scene = dynamic_cast<Mode7Scene*>(mode7Scene);
+	Scene* scene = new Mode7Scene;
 
 	while (window.isOpen())
 	{
@@ -55,20 +52,17 @@ int main()
 		if (ImGui::Button("New Mandelbrot Scene"))
 		{
 			delete scene;
-			mbScene = new MandelbrotScene();
-			scene = dynamic_cast<MandelbrotScene*>(mbScene);
+			scene = new MandelbrotScene();
 		}
 		if (ImGui::Button("New Muncher Scene"))
 		{
 			delete scene;
-			munchScene = new MuncherScene();
-			scene = dynamic_cast<MuncherScene*>(munchScene);
+			scene = new MuncherScene();
 		}
 		if (ImGui::Button("New Mode 7 Scene"))
 		{
 			delete scene;
-			mode7Scene = new Mode7Scene();
-			scene = dynamic_cast<Mode7Scene*>(mode7Scene);
+			scene = new Mode7Scene();
 		}
 		ImGui::End();
 
@@ -76,7 +70,6 @@ int main()
 
 		window.display();
 	}
-	delete mbScene;
-	delete munchScene;
-	delete mode7Scene;
+	delete scene;
+	return 0;
 }
