@@ -64,5 +64,5 @@ void Mode7Scene::Main(const float dt, sf::RenderTexture* renderTexture)
 	planeSpr.setTexture(planeTex);
 	planeSpr.setPosition({0,-int(SCREENHEIGHT-planeHeight)});
 	renderTexture->draw(planeSpr);
-	planeRndr->~Image();
+	delete planeRndr;
 }

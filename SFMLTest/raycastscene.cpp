@@ -99,5 +99,5 @@ void RaycastScene::Main(const float dt, sf::RenderTexture* renderTexture)
 	frameTex.loadFromImage(*frameBuffer);
 	frameSpr.setTexture(frameTex);
 	renderTexture->draw(frameSpr);
-	frameBuffer->~Image();
+	delete frameBuffer;
 }
