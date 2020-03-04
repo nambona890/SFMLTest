@@ -54,19 +54,19 @@ int main()
 		ImGui::SliderFloat("Timescale", &timescale, 0.1, 10);
 		if (ImGui::Button("New Mandelbrot Scene"))
 		{
-			delete mbScene;
+			delete scene;
 			mbScene = new MandelbrotScene();
 			scene = dynamic_cast<MandelbrotScene*>(mbScene);
 		}
 		if (ImGui::Button("New Muncher Scene"))
 		{
-			delete munchScene;
+			delete scene;
 			munchScene = new MuncherScene();
 			scene = dynamic_cast<MuncherScene*>(munchScene);
 		}
 		if (ImGui::Button("New Mode 7 Scene"))
 		{
-			delete mode7Scene;
+			delete scene;
 			mode7Scene = new Mode7Scene();
 			scene = dynamic_cast<Mode7Scene*>(mode7Scene);
 		}
