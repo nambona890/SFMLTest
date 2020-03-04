@@ -5,10 +5,10 @@ Muncher::Muncher()
 
 }
 
-Muncher::Muncher(const sf::Texture* muncherImage, const sf::Color* initColor)
+Muncher::Muncher(const sf::Texture* muncherImage, const sf::Color initColor)
 {
 	muncherSprite.setTexture(*muncherImage);
-	muncherSprite.setColor(*initColor);
+	muncherSprite.setColor(initColor);
 	size = randf3(1.5f, 6.0f);
 	angle = randf2(TAU);
 	bounds = size*((muncherImage->getSize().x + muncherImage->getSize().y) / 4);
@@ -71,7 +71,7 @@ ControlableMuncher::ControlableMuncher()
 
 }
 
-ControlableMuncher::ControlableMuncher(const sf::Texture* muncherImage, const sf::Color* initColor) : Muncher(muncherImage, initColor)
+ControlableMuncher::ControlableMuncher(const sf::Texture* muncherImage, const sf::Color initColor) : Muncher(muncherImage, initColor)
 {
 
 }

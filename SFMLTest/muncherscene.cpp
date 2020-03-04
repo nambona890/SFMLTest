@@ -6,9 +6,9 @@ MuncherScene::MuncherScene()
 	muncherTex[1].loadFromFile("munch2.png");
 	for (int i = 0; i < 8; i++)
 	{
-		munchers.push_back(Muncher(&muncherTex[0], &sf::Color{ 255,0,0 }));
+		munchers.push_back(Muncher(&muncherTex[0], sf::Color{ 255,0,0 }));
 	}
-	controlMuncher = ControlableMuncher(&muncherTex[0], &sf::Color{ 255,255,255 });
+	controlMuncher = ControlableMuncher(&muncherTex[0], sf::Color{ 255,255,255 });
 }
 
 void MuncherScene::Main(const float dt, sf::RenderTexture* renderTexture)

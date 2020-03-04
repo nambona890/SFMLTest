@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <stdlib.h>
 #include <ctime>
+#include <cmath>
 
 #define PI 3.14159265358f
 #define TAU 6.28318530718f
@@ -13,14 +14,6 @@
 #define randf2(R_MAX) (float(rand())/float(RAND_MAX/R_MAX))
 #define randf3(R_MIN,R_MAX) (R_MIN+(float(rand())/float(RAND_MAX/(R_MAX-R_MIN))))
 #define BounceAngle(angle,normal) modulo(((normal - angle) * 2 + angle) + PI, TAU)
-
-static unsigned int gamemode = 0;
-
-enum : unsigned int
-{
-	MODE_MUNCHER,
-	MODE_RAYCAST
-};
 
 typedef sf::Vector2f Vec2f;
 
