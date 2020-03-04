@@ -11,7 +11,7 @@ MuncherScene::MuncherScene()
 	controlMuncher = ControlableMuncher(&muncherTex[0], sf::Color{ 255,255,255 });
 }
 
-void MuncherScene::Main(const float dt, sf::RenderTexture* renderTexture)
+void MuncherScene::Main(const float dt, sf::RenderTexture& renderTexture)
 {
 
 	munchTime += dt;
@@ -24,12 +24,12 @@ void MuncherScene::Main(const float dt, sf::RenderTexture* renderTexture)
 			munchIndex = 0;
 		munchTime = 0.0f;
 	}
-	renderTexture->clear(sf::Color{ 0, 128, 128 });
+	renderTexture.clear(sf::Color{ 0, 128, 128 });
 	for (int i = 0; i < 8; i++)
 	{
 		munchers[i].UpdateMuncher(dt);
-		renderTexture->draw(munchers[i].muncherSprite);
+		renderTexture.draw(munchers[i].muncherSprite);
 	}
 	controlMuncher.UpdateMuncher(dt);
-	renderTexture->draw(controlMuncher.GetMuncherSprite());
+	renderTexture.draw(controlMuncher.GetMuncherSprite());
 }

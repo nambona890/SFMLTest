@@ -38,7 +38,7 @@ int main()
 		renderTexture.clear(sf::Color{ 0, 0, 0 });
 		ImGui::SFML::Update(window, dtt);
 
-		scene->Main(dt, &renderTexture);
+		scene->Main(dt, renderTexture);
 
 		sf::Sprite renderSprite(renderTexture.getTexture());
 		window.draw(renderSprite);

@@ -19,10 +19,9 @@ RaycastScene::RaycastScene()
 	}
 }
 
-void RaycastScene::Main(const float dt, sf::RenderTexture* renderTexture)
+void RaycastScene::Main(const float dt, sf::RenderTexture& renderTexture)
 {
-	sf::Image* frameBuffer = new sf::Image();
-	frameBuffer->create(SCREENWIDTH, SCREENHEIGHT, sf::Color::Black);
+	frameBuffer.create(SCREENWIDTH, SCREENHEIGHT, sf::Color::Black);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 		angle = modulo(angle - (0.4f * PI * dt), TAU);
@@ -89,15 +88,14 @@ void RaycastScene::Main(const float dt, sf::RenderTexture* renderTexture)
 			for (unsigned int y = ceiling; y < floor; y++)
 			{
 				if (y > 0 && y < SCREENHEIGHT)
-					frameBuffer->setPixel(x, y, wallColor);
+					frameBuffer.setPixel(x, y, wallColor);
 			}
 		}
 	}
 
 	sf::Texture frameTex;
 	sf::Sprite frameSpr;
-	frameTex.loadFromImage(*frameBuffer);
+	frameTex.loadFromImage(frameBuffer);
 	frameSpr.setTexture(frameTex);
-	renderTexture->draw(frameSpr);
-	delete frameBuffer;
+	renderTexture.draw(frameSpr);
 }

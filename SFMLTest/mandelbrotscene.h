@@ -16,7 +16,7 @@ private:
 	
 public:
 	MandelbrotScene();
-	void Main(const float dt, sf::RenderTexture* renderTexture);
+	void Main(const float dt, sf::RenderTexture& renderTexture);
 private:
 	void GenerateSet();
 };

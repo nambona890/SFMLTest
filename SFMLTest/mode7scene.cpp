@@ -4,10 +4,10 @@
 
 Mode7Scene::Mode7Scene()
 {
-	planeImg->loadFromFile("ayylmao.png");
+	planeImg.loadFromFile("ayylmao.png");
 }
 
-void Mode7Scene::Main(const float dt, sf::RenderTexture* renderTexture)
+void Mode7Scene::Main(const float dt, sf::RenderTexture& renderTexture)
 {
 	ImGui::Begin("Mode 7");
 
@@ -37,8 +37,7 @@ void Mode7Scene::Main(const float dt, sf::RenderTexture* renderTexture)
 
 	const unsigned int planeHeight = unsigned int(SCREENHEIGHT * 0.85);
 
-	sf::Image* planeRndr = new sf::Image;
-	planeRndr->create(SCREENWIDTH, planeHeight, sf::Color::Black);
+	planeRndr.create(SCREENWIDTH, planeHeight, sf::Color::Black);
 
 	sf::Texture planeTex;
 	sf::Sprite planeSpr;
@@ -51,18 +50,17 @@ void Mode7Scene::Main(const float dt, sf::RenderTexture* renderTexture)
 		for (int j = 0; j < SCREENWIDTH; j++)
 		{
 			Vec2f tranPoint = tmpTransform.transformPoint({ (float)j - (SCREENWIDTH / 2),float(planeHeight + centerY) });
-			planeRndr->setPixel(j, i,
-				planeImg->getPixel(
-					modulo((int)tranPoint.x+(int)pos.x, (int)planeImg->getSize().x),
-					modulo((int)-tranPoint.y+ (int)pos.y, (int)planeImg->getSize().y)
+			planeRndr.setPixel(j, i,
+				planeImg.getPixel(
+					modulo((int)tranPoint.x+(int)pos.x, (int)planeImg.getSize().x),
+					modulo((int)-tranPoint.y+ (int)pos.y, (int)planeImg.getSize().y)
 				)
 			);
 		}
 	}
 
-	planeTex.loadFromImage(*planeRndr);
+	planeTex.loadFromImage(planeRndr);
 	planeSpr.setTexture(planeTex);
 	planeSpr.setPosition({0,-int(SCREENHEIGHT-planeHeight)});
-	renderTexture->draw(planeSpr);
-	delete planeRndr;
+	renderTexture.draw(planeSpr);
 }

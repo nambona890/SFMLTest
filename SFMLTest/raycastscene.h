@@ -6,6 +6,7 @@
 class RaycastScene : public Scene
 {
 private:
+	sf::Image frameBuffer;
 	Vec2f pos = { 0.0f,0.0f };
 	float angle = -PI;
 	float fov = PI / 4.0f;
@@ -35,5 +36,5 @@ private:
 	static constexpr float mapSize = 2048;
 public:
 	RaycastScene();
-	void Main(const float dt, sf::RenderTexture* renderTexture);
+	void Main(const float dt, sf::RenderTexture& renderTexture);
 };

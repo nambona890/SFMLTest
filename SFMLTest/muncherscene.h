@@ -15,5 +15,5 @@ private:
 	int munchIndex = 0;
 public:
 	MuncherScene();
-	void Main(const float dt, sf::RenderTexture* renderTexture);
+	void Main(const float dt, sf::RenderTexture& renderTexture);
 };

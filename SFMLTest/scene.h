@@ -9,7 +9,7 @@ public:
 
 	}
 	virtual ~Scene() = default;
-	virtual void Main(const float dt, sf::RenderTexture* renderTexture)
+	virtual void Main(const float dt, sf::RenderTexture& renderTexture)
 	{
 
 	}

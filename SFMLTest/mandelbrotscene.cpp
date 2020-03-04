@@ -7,7 +7,7 @@ MandelbrotScene::MandelbrotScene()
 	GenerateSet();
 }
 
-void MandelbrotScene::Main(const float dt, sf::RenderTexture* renderTexture)
+void MandelbrotScene::Main(const float dt, sf::RenderTexture& renderTexture)
 {
 	ImGui::Begin("Mandelbrot Shit");
 
@@ -21,7 +21,7 @@ void MandelbrotScene::Main(const float dt, sf::RenderTexture* renderTexture)
 	sf::Sprite spr;
 	tex.loadFromImage(set);
 	spr.setTexture(tex);
-	renderTexture->draw(spr);
+	renderTexture.draw(spr);
 }
 
 void MandelbrotScene::GenerateSet()
