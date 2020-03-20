@@ -13,4 +13,9 @@ public:
 	{
 
 	}
+	virtual void Main(const float dt)
+	{
+
+	}
+	static const bool opengl = false;
 };

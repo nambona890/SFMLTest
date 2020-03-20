@@ -2,25 +2,20 @@
 
 RaycastScene::RaycastScene()
 {
-	offset = { mapSize/2,mapSize/2 };
-	nodes.create(mapSize, mapSize, sf::Color::Black);
-	for (Line l : lines)
-	{
-		float lineAng = atan2f(vertices[l.v2].y - vertices[l.v1].y, vertices[l.v2].x - vertices[l.v1].x);
-		Vec2f lineVec = { sin(lineAng) * check ,cos(lineAng) * check };
-		Vec2f initVec = { vertices[l.v1].x,vertices[l.v1].y };
-		float lineDist = sqrt(pow(vertices[l.v1].x - vertices[l.v2].x, 2) + pow(vertices[l.v1].y - vertices[l.v2].y, 2));
-		for (float i = 0; i < lineDist; i += check * 2)
-		{
-			initVec += lineVec;
-			sf::Vector2i nodeVec = { (int)initVec.x + (int)offset.x,(int)initVec.y + (int)offset.y };
-			nodes.setPixel(nodeVec.x, nodeVec.y, l.col);
-		}
-	}
+	
 }
 
 void RaycastScene::Main(const float dt, sf::RenderTexture& renderTexture)
 {
+
+	ImGui::Begin("Raycast");
+
+	ImGui::SliderFloat("X", &pos.x, 0.1f, 5.0f);
+	ImGui::SliderFloat("Y", &pos.y, 0.1f, 5.0f);
+	ImGui::SliderAngle("Angle", &angle, 0.0f, 360.0f);
+
+	ImGui::End();
+
 	frameBuffer.create(SCREENWIDTH, SCREENHEIGHT, sf::Color::Black);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
@@ -29,33 +24,42 @@ void RaycastScene::Main(const float dt, sf::RenderTexture& renderTexture)
 		angle = modulo(angle + (0.4f * PI * dt), TAU);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
 	{
-		pos.x += sin(-angle) * -100.0f * dt;
-		pos.y += cos(-angle) * -100.0f * dt;
+		pos.x += sin(angle) * 4.0f * dt;
+		pos.y += cos(angle) * 4.0f * dt;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
 	{
-		pos.x += sin(-angle) * 100.0f * dt;
-		pos.y += cos(-angle) * 100.0f * dt;
+		pos.x += sin(angle) * -4.0f * dt;
+		pos.y += cos(angle) * -4.0f * dt;
 	}
 
 	for (unsigned int x = 0; x < SCREENWIDTH; x++)
 	{
-		float rayAngle = (angle - (fov / 2.0f)) + (x / SCREENWIDTH) * fov;
+		float rayAngle = (angle - (fov / 2.0f)) + ((float)x / SCREENWIDTH) * fov;
 		float wallDistance = 0.0f;
 		sf::Color wallColor;
 		bool wallHit = false;
 
-		Vec2f rayVec = { sin(angle),cos(angle) };
+		Vec2f rayVec = { sin(rayAngle),cos(rayAngle) };
 
-		while (!wallHit && wallDistance < 500.0f)
+		while (!wallHit && wallDistance < 100.0f)
 		{
 			wallDistance += check;
-			Vec2f testVec = (pos + (rayVec * wallDistance))+offset;
-
-			if (nodes.getPixel((int)testVec.x,(int)testVec.y) != sf::Color::Black)
+			Vec2f testVec = pos + (rayVec * wallDistance);
+			unsigned int index = clamp((unsigned int)(testVec.x), 0u, mapWidth) + clamp((unsigned int)(testVec.y), 0u, mapHeight) * mapWidth;
+			if (map[index] != '0')
 			{
 				wallHit = true;
-				wallColor = nodes.getPixel((int)testVec.x, (int)testVec.y);
+				switch (map[index])
+				{
+				default:
+				case '1':
+					wallColor = sf::Color::White;
+					break;
+				case '2':
+					wallColor = sf::Color::Red;
+					break;
+				}
 			}
 
 			//unsigned int lineInd = 0;
@@ -83,12 +87,11 @@ void RaycastScene::Main(const float dt, sf::RenderTexture& renderTexture)
 
 		if (wallHit)
 		{
-			int ceiling = float((SCREENHEIGHT * 0.5f) - SCREENHEIGHT / (wallDistance));
-			int floor = SCREENHEIGHT - ceiling;
+			int ceiling = clamp(float((SCREENHEIGHT * 0.5f) - SCREENHEIGHT / (wallDistance)),0.0f,SCREENHEIGHT-1.0f);
+			int floor = clamp(SCREENHEIGHT - ceiling,0,SCREENHEIGHT);
 			for (unsigned int y = ceiling; y < floor; y++)
 			{
-				if (y > 0 && y < SCREENHEIGHT)
-					frameBuffer.setPixel(x, y, wallColor);
+				frameBuffer.setPixel(x, y, wallColor);
 			}
 		}
 	}

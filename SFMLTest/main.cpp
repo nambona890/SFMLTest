@@ -18,7 +18,7 @@ int main()
 
 	ImGui::SFML::Init(window);
 
-	Scene* scene = new Mode7Scene;
+	Scene* scene = new RaycastScene;
 
 	while (window.isOpen())
 	{
@@ -63,6 +63,11 @@ int main()
 		{
 			delete scene;
 			scene = new Mode7Scene();
+		}
+		if (ImGui::Button("New Raycast Scene"))
+		{
+			delete scene;
+			scene = new RaycastScene();
 		}
 		ImGui::End();
 
