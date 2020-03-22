@@ -7,6 +7,9 @@ class RaycastScene : public Scene
 {
 private:
 	sf::Image frameBuffer;
+	sf::Image rinTex;
+	sf::Image emiTex;
+	sf::Image defTex;
 	Vec2f pos = { 5.5f,9.5f };
 	float angle = -PI;
 	float fov = PI / 4.0f;
