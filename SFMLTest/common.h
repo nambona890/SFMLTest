@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <ctime>
 #include <cmath>
+#include <algorithm>
+#include <execution>
+#include <sstream>
 
 #define PI 3.14159265358f
 #define TAU 6.28318530718f

@@ -12,7 +12,7 @@ private:
 	sf::Image defTex;
 	Vec2f pos = { 5.5f,9.5f };
 	float angle = -PI;
-	float fov = PI / 4.0f;
+	float fov = PI / 3.5f;
 	char* map = new char[mapWidth*mapHeight + 1] {
 		"111111111111"
 		"100000000001"
