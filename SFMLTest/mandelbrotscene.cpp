@@ -11,7 +11,7 @@ void MandelbrotScene::Main(const float dt, sf::RenderTexture& renderTexture)
 {
 	std::ostringstream time;
 	time << "Generated in " << genTime << " seconds.";
-	ImGui::Begin("Mandelbrot Shit");
+	ImGui::Begin("Mandelbrot Scene");
 
 	ImGui::InputInt("Iterations", &iterations, 1, 1);
 	if (ImGui::Button("Generate"))

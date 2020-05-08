@@ -4,7 +4,7 @@ int main()
 {
 	srand((unsigned int)time(NULL));
 
-	sf::RenderWindow window(sf::VideoMode(SCREENWIDTH, SCREENHEIGHT), "ur mom");
+	sf::RenderWindow window(sf::VideoMode(SCREENWIDTH, SCREENHEIGHT), "SFML C++ test");
 	sf::RenderTexture renderTexture;
 	renderTexture.create(SCREENWIDTH, SCREENHEIGHT);
 
