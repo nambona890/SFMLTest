@@ -31,18 +31,17 @@ class MandelbrotScene::GenClass
 {
 private:
 	int iterations;
-	int index;
 	double xSlope;
 	double ySlope;
 public:
-	GenClass(int it) : index(0)
+	GenClass(int it) : iterations(it)
 	{
 		xSlope = (xUBound - xLBound) / SCREENWIDTH;
 		ySlope = (yUBound - yLBound) / SCREENHEIGHT;
-		iterations = it;
 	}
-	unsigned char operator()()
+	unsigned char operator()(const int a)
 	{
+		int index = a;
 		unsigned int x = modulo(index++, SCREENWIDTH);
 		unsigned int y = (unsigned int)std::floor((float)index / (float)SCREENWIDTH);
 		float curX = xLBound + xSlope*(float)x;
@@ -69,14 +68,16 @@ public:
 void MandelbrotScene::GenerateSet()
 {
 	sf::Clock c;
+	std::vector<int> indexes(SCREENHEIGHT * SCREENWIDTH);
 	std::vector<unsigned char> setVals(SCREENHEIGHT * SCREENWIDTH);
 	iterations = std::max(1, iterations);
+	std::iota(indexes.begin(), indexes.end(),0);
 	set.create(SCREENWIDTH, SCREENHEIGHT, sf::Color::White);
 	GenClass g(iterations);
 	if (parallel)
-		std::generate(std::execution::par, setVals.begin(), setVals.end(), g);
+		std::transform(std::execution::par, indexes.begin(), indexes.end(), setVals.begin(), g);
 	else
-		std::generate(setVals.begin(), setVals.end(), g);
+		std::transform(indexes.begin(), indexes.end(), setVals.begin(), g);
 	for (int x = 0; x < SCREENWIDTH; x++)
 	{
 		for (int y = 0; y < SCREENHEIGHT; y++)
